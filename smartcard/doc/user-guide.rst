@@ -334,7 +334,7 @@ smartcard protocols are the T=0 protocol and the T=1 protocol, for byte
 or block transmission, respectively. The required protocol can be
 specified at card connection or card transmission.
 
-By defaults, the connect() method of the CardConnection object.will try
+By defaults, the connect() method of the CardConnection object will try
 to connect using either the T=0 or T=1 protocol. To force a connection
 protocol, you can pass the required protocol to the connect() method.
 
@@ -536,7 +536,7 @@ returns.
 
 On card connection events (connect, disconnect, transmit command apdu,
 receive response apdu), the card connection notifies its observers with a
-`CarConnectionEvent
+`CardConnectionEvent
 <http://pyscard.sourceforge.net/epydoc/smartcard.CardConnectionEvent.CardConnectionEvent-class.html>`_
 including the event type and the event data. The
 `ConsoleCardConnectionObserver
@@ -1196,15 +1196,15 @@ create an instance of selectDFTELECOMObserver and add it to the `CardMonitor
 Connections
 ***********
 
-Connecting to a card and sending APDUs is done thru a CardConnection
-object. CardConnection objects are created using a CardRequest, or by
+Connecting to a card and sending APDUs is done through a `CardConnection <https://pyscard.sourceforge.io/epydoc/smartcard.CardConnection.CardConnection-class.html>`_
+object. CardConnection objects are created using a `CardRequest <https://pyscard.sourceforge.io/epydoc/smartcard.CardRequest.CardRequest-class.html>`_, or by
 the CardMonitoring.
 
 Creating a Connection from a CardRequest
 ========================================
 
-A successful CardRequest returns a CardService matching the requested
-card service for the card, or a PassThruCardService if no specific card
+A successful CardRequest returns a _`CardService <https://pyscard.sourceforge.io/epydoc/smartcard.CardService.CardService-class.html>`_ matching the requested
+card service for the card, or a `PassThruCardService <https://pyscard.sourceforge.io/epydoc/smartcard.PassThruCardService.PassThruCardService-class.html>`_ if no specific card
 service was required:
 
     >>> from smartcard.CardType import AnyCardType
@@ -1221,7 +1221,7 @@ service was required:
     >>> print cardservice.connection.getReader()
     SchlumbergerSema Reflex USB v.2 0
 
-Each CardService has a connection attribute, which is a CardConnection
+Each CardService has a connection attribute, which is a _`CardConnection <https://pyscard.sourceforge.io/epydoc/smartcard.CardConnection.CardConnection-class.html>`_
 for the card.
 
 Creating Connection from CardMonitoring
@@ -1252,7 +1252,7 @@ Full sample code
 Card Connection Decorators
 ==========================
 
-APDUs are transmitted to a card using the CardConnection object. It is
+APDUs are transmitted to a card using the _`CardConnection <https://pyscard.sourceforge.io/epydoc/smartcard.CardConnection.CardConnection-class.html>`_ object. It is
 sometime useful to change transparently the behaviour of a smart card
 connection, for example to establish automatically a secure channel, or
 filter and modify on the fly some APDU commands or responses, or the
@@ -1320,7 +1320,7 @@ Full sample code:
 Exclusive Card Connection Decorator
 -----------------------------------
 
-The ExclusiveConnectCardConnection object performs an exclusive
+The _`ExclusiveConnectCardConnection <https://pyscard.sourceforge.io/epydoc/smartcard.ExclusiveConnectCardConnection.ExclusiveConnectCardConnection-class.html>`_ object performs an exclusive
 connection to the card, i.e. no other thread or process will be able to
 connect to the card. With PCSC readers, this is done by performing a
 SCardConnect with the SCARD_SHARE_EXCLUSIVE attribute.
@@ -1350,7 +1350,7 @@ SCardConnect with the SCARD_SHARE_EXCLUSIVE attribute.
 Exclusive Transmit Card Connection Decorator
 --------------------------------------------
 
-The ExclusiveTransmitCardConnection performs an exclusive transaction to
+The _`ExclusiveTransmitCardConnection <https://pyscard.sourceforge.io/epydoc/smartcard.ExclusiveTransmitCardConnection.ExclusiveTransmitCardConnection-class.html>`_ performs an exclusive transaction to
 the card, i.e. a series of transmit that cannot be interrupted by other
 threads' transmits. To do so, include the desired transmits between an
 lock() and unlock() method call on the ExclusiveTransmitCardConnection:
